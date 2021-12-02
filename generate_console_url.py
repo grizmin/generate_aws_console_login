@@ -41,7 +41,7 @@ import requests  # 'pip install requests'
 import boto3  # AWS SDK for Python (Boto3) 'pip install boto3'
 
 
-VERSION = '0.0.1'
+VERSION = '0.0.12'
 __AUTHOR__ = 'grizmin@gmail.com'
 
 def main():
@@ -55,7 +55,7 @@ def main():
     tags = arg['--tags']
     session_timeout = arg['--timeout']
     
-    # Step 1: Obtain access
+    # Step 1: Authenticate
     if not profle_name:
         print("No profile name specified. Falling back to environment variables.")
         my_session = boto3.Session(
@@ -100,8 +100,7 @@ def main():
     signin_token = json.loads(r.text)
 
     # Step 5: Create URL where users can use the sign-in token to sign in to
-    # the console. This URL must be used within 60 minutes after the
-    # sign-in token was issued.
+    # the console. This URL must be used within 60 minutes (by default) after the sign-in token was issued.
     request_parameters = "?Action=login"
     request_parameters += "&Issuer=cb-sbu.io"
     request_parameters += "&Destination=" + \
