@@ -1,7 +1,7 @@
 """
 This tool will create a AWS Console login session using any role, that you have permissions to assume.
 
-WARNING: Once generated the console login link will be active for the chosen duration time and _ANYONE_ with the link can use it to log in without _ANY_ authentication.
+WARNING: Once generated the console login link will be active for the given amount of time and _ANYONE_ with the link can use it to log in without _ANY_ authentication.
 
 Usage:
     generate_console_url.py [options] [--] <account_id> [--tags=TAGS]...
